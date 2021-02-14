@@ -7,14 +7,14 @@ import {
   Platform,
   TextInput,
   Alert} 
-  from 'react-native'
-import Input from '../../components/Input'
-import { Form } from '@unform/mobile'
-import { FormHandles } from '@unform/core'
-import Button from '../../components/Button'
-import getValidationErrors from '../../utils/getValidationErrors'
-import logoImg from '../../assets/logo.png'
-import * as Yup from 'yup'
+  from 'react-native';
+import Input from '../../components/Input';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
+import Button from '../../components/Button';
+import getValidationErrors from '../../utils/getValidationErrors';
+import logoImg from '../../assets/logo.png';
+import * as Yup from 'yup';
 import { 
   Container, 
   Title, 
@@ -23,7 +23,7 @@ import {
   CreateAccountButton, 
   CreateAccountButtonText } 
   from './style';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
 interface SignInFormData {

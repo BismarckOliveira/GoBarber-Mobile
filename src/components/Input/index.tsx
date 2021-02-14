@@ -27,7 +27,8 @@ interface InputRef {
 }
 
 const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name ,
-   icon , ...rest}, ref) => {
+   icon , ...rest}, 
+   ref) => {
  const inputElementRef = useRef<any>(null);
  const { registerField, defaultValue = '', fieldName, error  } = useField(name);
  const inputValueRef = useRef<InputValueReference>({ value: defaultValue });
@@ -76,20 +77,20 @@ const handleInputBlur = useCallback(() => {
         size={20}
         color={isFocused || isFilled ? '#ff9000' : '#666360'}
       />
+  <TextInput
+        ref={inputElementRef}
+        keyboardAppearance="dark"
+        placeholderTextColor="#666360"
+        defaultValue={defaultValue}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        onChangeText={value => {
+          inputValueRef.current.value = value;
+        }}
+        {...rest}
+      />
+    </Container>
+  );
+};
 
-    <TextInput 
-    ref={inputElementRef}
-    keyboardAppearance="dark"
-    onFocus={handleInputFocus}
-    onBlur={handleInputBlur}
-    placeholderTextColor={"#666360"} 
-    defaultValue={defaultValue}
-    onChangeText={ value => {
-      inputValueRef.current.value = value;
-    }}
-    {...rest}/>
- </Container>
-)
-
-}
 export default forwardRef(Input);

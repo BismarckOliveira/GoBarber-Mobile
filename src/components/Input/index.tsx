@@ -70,7 +70,7 @@ const handleInputBlur = useCallback(() => {
  }, [fieldName, registerField])
 
   return (
-  <Container isFocused={isFocused}>
+  <Container isFocused={isFocused} isErrored={!!error}>
     
     <Icon
         name={icon}

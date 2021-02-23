@@ -22,7 +22,8 @@ import {
   from './style';
 import { useNavigation } from '@react-navigation/native'  
 import Icon from 'react-native-vector-icons/Feather';
-import getValidationErrors from '../../utils/getValidationErrors' 
+import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api'; 
 
 interface SignUpFormData {
   name: string;
@@ -54,9 +55,14 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-     // await api.post('/users', data);
+     await api.post('/users', data);
 
-     //history.push('/');
+     Alert.alert(
+       'Cadastro Realizado com sucesso',
+       'Você ja pode fazer login na aplicação',
+     )
+
+     navigation.goBack();
  
     
     } catch (err) {

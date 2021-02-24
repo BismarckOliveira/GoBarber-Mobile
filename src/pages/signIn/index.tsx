@@ -25,6 +25,7 @@ import {
   from './style';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
+import { useAuth } from '../../hooks/Auth'
 
 interface SignInFormData {
   email: string;
@@ -37,6 +38,8 @@ const SignIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   
   const navigation = useNavigation();
+
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -54,10 +57,10 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        // await signIn({
-        //  email: data.email,
-        //  password: data.password,
-        //});
+         await signIn({
+          email: data.email,
+          password: data.password,
+        });
 
         // history.push('/dashboard');
       } catch (err) {
@@ -73,7 +76,7 @@ const SignIn: React.FC = () => {
           'Ocorreu um erro na autenticação, cheque as credenciais',
         );
       }
-    }, []);
+    }, [signIn]);
 
 
   return (

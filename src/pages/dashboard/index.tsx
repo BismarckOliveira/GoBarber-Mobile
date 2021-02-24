@@ -1,9 +1,16 @@
 import { FormProvider } from '@unform/core';
 import React from 'react';
-import { View } from 'react-native'
+import { View, Button } from 'react-native'
+import { useAuth } from '../../hooks/Auth'
 
 const Dashboard: React.FC = () => {
-  return <View />
+  const {signOut} = useAuth()
+
+  return (
+    <View style={{flex: 1 , justifyContent: 'center'}}>
+      <Button title="sair" onPress={signOut}/>
+    </View>
+  )
 }
 
 export default Dashboard;
